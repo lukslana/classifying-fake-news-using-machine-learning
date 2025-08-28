@@ -2,8 +2,6 @@ import streamlit as st
 import requests
 import pandas as pd
 import os
-from sklearn.feature_extraction.text import CountVectorizer
-import matplotlib.pyplot as plt
 import subprocess
 import sys
 
@@ -12,6 +10,19 @@ try:
 except ImportError:
     subprocess.run([sys.executable, '-m', 'pip', 'install', 'beautifulsoup4'])
     from bs4 import BeautifulSoup
+
+#from sklearn.feature_extraction.text import CountVectorizer
+try:
+    from sklearn.feature_extraction.text import CountVectorizer
+except ImportError:
+    subprocess.run([sys.executable, '-m', 'pip', 'install', 'scikit-learn'])
+    from sklearn.feature_extraction.text import CountVectorizer
+
+try:
+    import matplotlib.pyplot as plt
+except ImportError:
+    subprocess.run([sys.executable, '-m', 'pip', 'install', 'matplotlib'])
+    import matplotlib.pyplot as plt
 
 def fetch_news_data(url):
     try:
